@@ -6,22 +6,23 @@ import { revalidateTag } from "next/cache";
 
 export async function addProductToWishlist(productId: string) {
   const token = await getUserToken();
-  try {
-    const response = await fetch(`${API_BASE_URL}/wishlist`, {
+
+  if (!token) {
+    throw new Error(" user is unauthrized");
+  }
+  const response = await fetch(
+    "https://ecommerce.routemisr.com/api/v1/wishlist",
+    {
       method: "POST",
       body: JSON.stringify({ productId }),
       headers: {
-        "Content-Type": "application/json",
         token: token as string,
+        "content-type": "application/json",
       },
-    });
-
-    const data = await response.json();
-    if (!response.ok) throw new Error(data.message);
-    return data;
-  } catch (error) {
-    return error;
-  }
+    },
+  );
+  const data = await response.json();
+  return data;
 }
 
 export async function getUserWishlist() {
@@ -56,7 +57,7 @@ export async function deleteProductFromWishlist(productId: string) {
 
     const data = await response.json();
     if (data.status === "success") {
-      revalidateTag("wishlist" , "max");
+      revalidateTag("wishlist", "max");
     }
     if (!response.ok) throw new Error(data.message);
     return data;

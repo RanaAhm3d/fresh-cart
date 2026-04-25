@@ -20,15 +20,21 @@ export default function WishlistButton({
   const { status } = useSession();
   const isWishlist = wishlistIds.includes(productId);
   async function addToWishlist() {
-    const response = await addProductToWishlist(productId);
-    if (response.status === "success") {
-      notify(response.message, "success");
-      setWishlistIds(response.data);
-      updateNumOfWishlistItems(response.data.length);
-    } else if (status === "unauthenticated") {
-      notify("Please Login First", "warn");
+    if (status === "unauthenticated") {
+      notify("please login first", "warn");
     } else {
-      notify(response.message, "error");
+      try {
+        const response = await addProductToWishlist(productId);
+        if (response.statusMsg === "fail") {
+          notify(response.message, "warn");
+        } else {
+          notify(response.message, "success");
+          setWishlistIds(response.data);
+          updateNumOfWishlistItems(response.data.length);
+        }
+      } catch (error) {
+        notify((error as Error).message, "error");
+      }
     }
   }
   async function removeFromWishlist() {

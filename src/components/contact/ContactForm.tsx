@@ -3,7 +3,15 @@ import Link from "next/link";
 import { BsFillQuestionCircleFill, BsSendFill } from "react-icons/bs";
 import { FaArrowRightLong } from "react-icons/fa6";
 import { Field, FieldLabel } from "../ui/field";
-import { InputGroup, InputGroupInput } from "../ui/input-group";
+import { Input } from "../ui/input";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "../ui/select";
+import { Textarea } from "../ui/textarea";
 
 export default function ContactForm() {
   return (
@@ -26,27 +34,113 @@ export default function ContactForm() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
             <Field className="w-full ">
               <FieldLabel htmlFor="name">Full Name</FieldLabel>
-              <InputGroup className="px-4 h-12 ">
-                <InputGroupInput
+              <div>
+                <Input
                   type="name"
                   name="name"
                   placeholder="John Doe"
-                  className="focus:outline-none focus:border-primary-500 focus:ring-2 focus:ring-primary-100 transition-all"
+                  className="px-4 h-12  focus-visible:outline-none focus-visible:border-primary-500 focus-visible:ring-2 focus-visible:ring-primary-100 transition-all"
                 />
-              </InputGroup>
+              </div>
             </Field>
             <Field className="w-full ">
               <FieldLabel htmlFor="email">Email Address</FieldLabel>
-              <InputGroup className="px-4 h-12 ">
-                <InputGroupInput
+              <div>
+                <Input
                   type="email"
                   name="email"
                   placeholder="john@example.com"
-                  className="focus:outline-none focus:border-primary-500 focus:ring-2 focus:ring-primary-100 transition-all"
+                  className="px-4 h-12 focus-visible:outline-none focus-visible:border-primary-500 focus-visible:ring-2 focus-visible:ring-primary-100 transition-all"
                 />
-              </InputGroup>
+              </div>
             </Field>
           </div>
+          <Field className="w-full">
+            <FieldLabel
+              htmlFor="subject"
+              className="text-sm font-medium text-gray-700"
+            >
+              Subject
+            </FieldLabel>
+
+            <Select>
+              <SelectTrigger
+                id="subject"
+                className="w-full py-6 px-4 border-gray-300 rounded-xl focus:ring-0! focus:ring-offset-0! focus:border-green-500! outline-none! text-gray-600"
+              >
+                <SelectValue placeholder="Select a subject" />
+              </SelectTrigger>
+
+              <SelectContent className="rounded-xl shadow-lg border-gray-200">
+                <SelectItem
+                  value="general"
+                  className="py-2 focus:bg-green-50 focus:text-green-700"
+                >
+                  General Inquiry
+                </SelectItem>
+                <SelectItem
+                  value="order"
+                  className="py-2 focus:bg-green-50 focus:text-green-700"
+                >
+                  Order Support
+                </SelectItem>
+                <SelectItem
+                  value="shipping"
+                  className="py-2 focus:bg-green-50 focus:text-green-700"
+                >
+                  Shipping Question
+                </SelectItem>
+                <SelectItem
+                  value="returns"
+                  className="py-2 focus:bg-green-50 focus:text-green-700"
+                >
+                  Returns & Refunds
+                </SelectItem>
+                <SelectItem
+                  value="product"
+                  className="py-2 focus:bg-green-50 focus:text-green-700"
+                >
+                  Product Information
+                </SelectItem>
+                <SelectItem
+                  value="feedback"
+                  className="py-2 focus:bg-green-50 focus:text-green-700"
+                >
+                  Feedback & Suggestions
+                </SelectItem>
+                <SelectItem
+                  value="other"
+                  className="py-2 focus:bg-green-50 focus:text-green-700"
+                >
+                  Other
+                </SelectItem>
+              </SelectContent>
+            </Select>
+          </Field>
+
+          <Field className="w-full">
+            <FieldLabel
+              htmlFor="message"
+              className="block text-sm font-medium text-gray-700 mb-2"
+            >
+              Message
+            </FieldLabel>
+
+            <Textarea
+              required
+              id="message"
+              placeholder="How Can We Help You ?"
+              className="
+                        h-35
+                        py-6 px-4 
+                        placeholder:text-base placeholder:text-gray-400
+                        border border-gray-300
+                      focus:border-green-500! focus:ring-0! focus:outline-none!
+                        rounded-xl
+                        resize-none
+                      "
+            />
+          </Field>
           <button
             type="submit"
             className="w-full md:w-auto inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-xl bg-primary-600 text-white font-semibold hover:bg-primary-700 transition-colors disabled:opacity-70 disabled:cursor-not-allowed shadow-sm shadow-primary-600/20"

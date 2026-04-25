@@ -140,7 +140,7 @@ const Navbar = ({
         {/* Desktop Menu */}
         <nav className="hidden items-center justify-between gap-4 lg:gap-8 lg:flex">
           {/* Logo */}
-          <a href={logo.url} className="flex items-center gap-2">
+          <Link href={logo.url} className="flex items-center gap-2">
             <Image
               src={logo.src}
               alt={logo.alt}
@@ -148,7 +148,7 @@ const Navbar = ({
               height={31}
               loading="eager"
             />
-          </a>
+          </Link>
           {/*Search Input */}
           <NavSerachInput />
           <div className="hidden xl:flex items-center">
@@ -294,9 +294,9 @@ const Navbar = ({
         <div className="block lg:hidden">
           <div className="flex items-center justify-between">
             {/* Logo */}
-            <a href={logo.url} className="flex items-center gap-2">
+            <Link href={logo.url} className="flex items-center gap-2">
               <Image src={logo.src} alt={logo.alt} width={130} height={31} />
-            </a>
+            </Link>
             <div className="flex items-center gap-3">
               <Link
                 href="/wishlist"
@@ -483,12 +483,12 @@ const renderMenuItem = (item: MenuItem) => {
 
   return (
     <NavigationMenuItem key={item.title}>
-      <NavigationMenuLink
+      <Link
         href={item.url}
         className="group inline-flex h-10 w-max items-center justify-center rounded-md bg-background px-4 py-2 text-sm font-medium transition-colors hover:bg-muted hover:text-accent-foreground"
       >
         {item.title}
-      </NavigationMenuLink>
+      </Link>
     </NavigationMenuItem>
   );
 };

@@ -34,7 +34,7 @@ export async function UpdateUserInformation(formValues: UserInfoPayloadType) {
     });
     const data = await response.json();
     if (!response.ok) {
-      throw new Error(data.errors.msg);
+      throw new Error(data.message);
     }
     return data;
   } catch (error) {

@@ -4,29 +4,21 @@ import { getUserToken } from "@/lib/helpers/authUtils";
 import { revalidateTag } from "next/cache";
 
 export async function addToCart(productId: string) {
-  try {
-    const token = await getUserToken();
-    const response = await fetch(
-      `https://ecommerce.routemisr.com/api/v2/cart`,
-      {
-        method: "POST",
-        body: JSON.stringify({ productId }),
-        headers: {
-          "Content-Type": "application/json",
-          token: token as string,
-        },
-      },
-    );
-    const data = await response.json();
-    if (!response.ok) throw new Error(data.message);
-    if (data.status === "success") {
-      revalidateTag("cartDetails", "max");
-      revalidateTag("wishlist", "max");
-    }
-    return data;
-  } catch (error) {
-    return error;
+  const token = await getUserToken();
+
+  if (!token) {
+    throw new Error(" user is unauthrized");
   }
+  const response = await fetch("https://ecommerce.routemisr.com/api/v2/cart", {
+    method: "POST",
+    body: JSON.stringify({ productId }),
+    headers: {
+      token: token as string,
+      "content-type": "application/json",
+    },
+  });
+  const data = await response.json();
+  return data;
 }
 
 export async function getUserCart() {

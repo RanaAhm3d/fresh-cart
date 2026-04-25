@@ -29,18 +29,23 @@ export default function AddToCartButton({
 
   function handleAddToCart() {
     startTransition(async () => {
-      const response: CartResponse = await addToCart(productId);
-
-      if (response.status === "success") {
-        notify(response.message, "success");
-        updateNumOfCartItems(response.numOfCartItems);
-        setCartItemsIds(response.data.products.map((item) => item.product._id));
-      } else if (status === "unauthenticated") {
-        notify("Please Login First", "warn");
-      } else if (response.message.includes("recently changed password")) {
-        notify("Session expired. Please login again.", "warn");
+      if (status === "unauthenticated") {
+        notify("please login first", "warn");
       } else {
-        notify(response.message, "error");
+        try {
+          const response: CartResponse = await addToCart(productId);
+          if (response.statusMsg === "fail") {
+            notify(response.message, "warn");
+          } else {
+            notify(response.message, "success");
+            updateNumOfCartItems(response.numOfCartItems);
+            setCartItemsIds(
+              response.data.products.map((item) => item.product._id),
+            );
+          }
+        } catch (error) {
+          notify((error as Error).message, "error");
+        }
       }
     });
   }

@@ -1,6 +1,7 @@
 import { Product } from "./product.interface";
 
 export interface CartResponse {
+  statusMsg?: string;
   status: string;
   message: string;
   numOfCartItems: number;

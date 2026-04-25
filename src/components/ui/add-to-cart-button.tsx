@@ -35,10 +35,10 @@ export default function AddToCartButton({
         notify(response.message, "success");
         updateNumOfCartItems(response.numOfCartItems);
         setCartItemsIds(response.data.products.map((item) => item.product._id));
-      } else if (
-        status === "unauthenticated"
-      ) {
+      } else if (status === "unauthenticated") {
         notify("Please Login First", "warn");
+      } else if (response.message.includes("recently changed password")) {
+        notify("Session expired. Please login again.", "warn");
       } else {
         notify(response.message, "error");
       }

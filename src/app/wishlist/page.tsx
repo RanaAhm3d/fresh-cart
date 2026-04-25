@@ -6,7 +6,7 @@ import { WishlistResponse } from "@/interfaces/wishlist.interface";
 
 export default async function Wishlist() {
   const wishlists: WishlistResponse = await getUserWishlist();
-  if (wishlists.data.length === 0) return <EmptyWishlist />;
+  if (!wishlists.data) return <EmptyWishlist />;
   return (
     <div className="min-h-screen bg-gray-50/50">
       <WishlistHeader wishlistCount={wishlists?.count} />

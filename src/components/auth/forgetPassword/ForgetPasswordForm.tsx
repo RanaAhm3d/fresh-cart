@@ -16,7 +16,6 @@ import { useTransition } from "react";
 import { Controller, useForm } from "react-hook-form";
 import { FaKey } from "react-icons/fa";
 import { FaArrowLeftLong, FaEnvelope, FaLock } from "react-icons/fa6";
-import { toast } from "sonner";
 
 export default function ForgetPasswordForm({
   onSuccess,

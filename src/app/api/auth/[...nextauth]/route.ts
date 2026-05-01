@@ -1,6 +1,5 @@
 import CredentialsProvider from "next-auth/providers/credentials";
 import NextAuth, { NextAuthOptions } from "next-auth";
-import { API_BASE_URL } from "@/services/api";
 import { jwtDecode } from "jwt-decode";
 
 interface DecodedToken {
@@ -17,13 +16,16 @@ export const authOptions: NextAuthOptions = {
 
       async authorize(credentials) {
         try {
-          const response = await fetch(`${API_BASE_URL}/auth/signin`, {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
+          const response = await fetch(
+            `https://ecommerce.routemisr.com/api/v1/auth/signin`,
+            {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify(credentials),
             },
-            body: JSON.stringify(credentials),
-          });
+          );
 
           const data = await response.json();
 

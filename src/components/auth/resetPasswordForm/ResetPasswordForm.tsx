@@ -45,22 +45,16 @@ export default function ResetPasswordForm({
 
   function onSubmit(formValues: ResetPasswordPayloadType) {
     startTransition(async () => {
-      try {
-        const payload: ResetPasswordRequest = {
-          ...formValues,
-          email,
-        };
-
-        const response = await resetPassword(payload);
-
-        if (response.status === "success") {
-          notify(response.message || "Password reset successfully!", "success");
-          onSuccess();
-        } else {
-          notify(response.message || "Failed to reset password", "error");
-        }
-      } catch (error) {
-        notify((error as Error).message, "error");
+      const payload: ResetPasswordRequest = {
+        ...formValues,
+        email,
+      };
+      const response = await resetPassword(payload);
+      if (response.statusMsg === "success") {
+        notify(response.message || "Password reset successfully!", "success");
+        onSuccess();
+      } else {
+        notify(response.message || "Failed to reset password", "error");
       }
     });
   }

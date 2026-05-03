@@ -31,15 +31,13 @@ export default function ForgetPasswordForm({
 
   function onSubmit(email: ForgetPasswordPayloadType) {
     startTransition(async () => {
-      try {
-        const response = await forgetPassword(email);
+      const response = await forgetPassword(email);
 
-        if (response.statusMsg === "success") {
-          notify(response.message, "success");
-          onSuccess(email.email);
-        }
-      } catch (error) {
-        notify((error as Error).message, "error");
+      if (response.statusMsg === "success") {
+        notify(response.message, "success");
+        onSuccess(email.email);
+      } else {
+        notify(response.message, "error");
       }
     });
   }

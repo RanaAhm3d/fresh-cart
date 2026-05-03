@@ -45,8 +45,7 @@ export default function VerifyCodeForm({
   function onSubmit(resetCode: VerifyCodePayloadType) {
     startTransition(async () => {
       const response = await verifyCode(resetCode);
-
-      if (response.status === "success") {
+      if (response.status === "Success") {
         notify(response.message || "Verification successful", "success");
         onSuccess();
       } else {

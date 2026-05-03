@@ -6,20 +6,21 @@ import { VerifyCodePayloadType } from "@/schema/verifyCode.schema";
 import { API_BASE_URL } from "@/services/api";
 
 export async function forgetPassword(email: ForgetPasswordPayloadType) {
-  try {
-    const response = await fetch(`${API_BASE_URL}/auth/forgotPasswords`, {
-      method: "POST",
-      body: JSON.stringify(email),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
-    const data = await response.json();
-    if (!response.ok) throw new Error(data.message);
-    return data;
-  } catch (error) {
-    return error;
+  const response = await fetch(`${API_BASE_URL}/auth/forgotPasswords`, {
+    method: "POST",
+    body: JSON.stringify(email),
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+
+  const data = await response.json();
+
+  if (!response.ok) {
+    throw new Error(data.message || "Something went wrong");
   }
+
+  return data;
 }
 
 export async function verifyCode(resetCode: VerifyCodePayloadType) {

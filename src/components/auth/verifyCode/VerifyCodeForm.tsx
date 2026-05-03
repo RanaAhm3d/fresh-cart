@@ -34,8 +34,7 @@ export default function VerifyCodeForm({
   function handleResetCode() {
     startTransition(async () => {
       const response = await forgetPassword({ email });
-
-      if (response.status === "success") {
+      if (response.statusMsg === "success") {
         notify(response.message, "success");
       } else {
         notify(response.message, "error");

@@ -50,7 +50,7 @@ export default function ResetPasswordForm({
         email,
       };
       const response = await resetPassword(payload);
-      if (response.statusMsg === "success") {
+      if (response.token ) {
         notify(response.message || "Password reset successfully!", "success");
         onSuccess();
       } else {

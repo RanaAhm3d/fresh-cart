@@ -28,11 +28,6 @@ export async function verifyCode(resetCode: VerifyCodePayloadType) {
   });
 
   const data = await response.json();
-
-  if (!response.ok) {
-    throw new Error(data.message || "Verification failed");
-  }
-
   return data;
 }
 
@@ -46,10 +41,5 @@ export async function resetPassword(formValues: ResetPasswordRequest) {
   });
 
   const data = await response.json();
-
-  if (!response.ok) {
-    throw new Error(data.message || "Reset password failed");
-  }
-
   return data;
 }

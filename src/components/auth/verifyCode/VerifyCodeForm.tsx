@@ -33,29 +33,25 @@ export default function VerifyCodeForm({
 
   function handleResetCode() {
     startTransition(async () => {
-      try {
-        const response = await forgetPassword({ email });
+      const response = await forgetPassword({ email });
 
-        if (response.status === "success") {
-          notify(response.message, "success");
-        }
-      } catch (error) {
-        notify((error as Error).message, "error");
+      if (response.status === "success") {
+        notify(response.message, "success");
+      } else {
+        notify(response.message, "error");
       }
     });
   }
 
   function onSubmit(resetCode: VerifyCodePayloadType) {
     startTransition(async () => {
-      try {
-        const response = await verifyCode(resetCode);
+      const response = await verifyCode(resetCode);
 
-        if (response.status === "success") {
-          notify(response.message || "Verification successful", "success");
-          onSuccess();
-        }
-      } catch (error) {
-        notify((error as Error).message, "error");
+      if (response.status === "success") {
+        notify(response.message || "Verification successful", "success");
+        onSuccess();
+      } else {
+        notify(response.message || "Verification failed", "error");
       }
     });
   }

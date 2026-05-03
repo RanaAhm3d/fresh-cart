@@ -24,35 +24,37 @@ export async function forgetPassword(email: ForgetPasswordPayloadType) {
 }
 
 export async function verifyCode(resetCode: VerifyCodePayloadType) {
-  try {
-    const response = await fetch(`${API_BASE_URL}/auth/verifyResetCode`, {
-      method: "POST",
-      body: JSON.stringify(resetCode),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
-    const data = await response.json();
-    if (!response.ok) throw new Error(data.message);
-    return data;
-  } catch (error) {
-    return error;
+  const response = await fetch(`${API_BASE_URL}/auth/verifyResetCode`, {
+    method: "POST",
+    body: JSON.stringify(resetCode),
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+
+  const data = await response.json();
+
+  if (!response.ok) {
+    throw new Error(data.message || "Verification failed");
   }
+
+  return data;
 }
 
 export async function resetPassword(formValues: ResetPasswordRequest) {
-  try {
-    const response = await fetch(`${API_BASE_URL}/auth/resetPassword`, {
-      method: "PUT",
-      body: JSON.stringify(formValues),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
-    const data = await response.json();
-    if (!response.ok) throw new Error(data.message);
-    return data;
-  } catch (error) {
-    return error;
+  const response = await fetch(`${API_BASE_URL}/auth/resetPassword`, {
+    method: "PUT",
+    body: JSON.stringify(formValues),
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+
+  const data = await response.json();
+
+  if (!response.ok) {
+    throw new Error(data.message || "Reset password failed");
   }
+
+  return data;
 }

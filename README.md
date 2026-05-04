@@ -1,36 +1,120 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🛒 Fresh Cart – Production-Ready E-Commerce App
 
-## Getting Started
+A modern, scalable e-commerce application built with **Next.js**, showcasing real-world architecture, authentication flows, and API integration.
 
-First, run the development server:
+🔗 **Live Demo:** https://fresh-cart-beta-three.vercel.app/
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+---
+
+## 🚀 Overview
+
+Fresh Cart is a full-featured e-commerce platform designed to simulate real production environments. It demonstrates advanced frontend practices, clean architecture, and robust error handling.
+
+This project highlights the ability to build scalable applications with secure authentication and smooth user experience.
+
+---
+
+## ✨ Key Features
+
+### 🔐 Authentication System
+
+* NextAuth credentials-based login
+* JWT session management
+* Protected routes & user state persistence
+
+### 🛍️ E-Commerce Core
+
+* Product listing & browsing
+* Product details page
+* Add to cart functionality
+
+### 🔎 Search & Filtering
+
+* Dynamic filtering system
+* Clean UI with reusable components
+
+### 🔄 Password Recovery Flow
+
+* Forgot Password
+* Verification Code handling
+* Secure password reset
+
+### 📱 Responsive Design
+
+* Mobile-first approach
+* Optimized UI across devices
+
+---
+
+## 🧑‍💻 Tech Stack
+
+* **Framework:** Next.js (App Router)
+* **Styling:** Tailwind CSS / Bootstrap
+* **Data Fetching:** React Query
+* **Authentication:** NextAuth
+* **API:** REST API (Route E-commerce API)
+* **Deployment:** Vercel
+
+---
+
+## 🏗️ Architecture Highlights
+
+* Modular folder structure (scalable & maintainable)
+* Separation between UI, services, and logic
+* Centralized API layer
+* Clean async/await error handling
+* Production-ready authentication flow
+
+---
+
+## ⚙️ Environment Variables
+
+```env id="0x3p9z"
+NEXTAUTH_SECRET=your_secret_key
+NEXTAUTH_URL=http://localhost:3000
+NEXT_PUBLIC_API_BASE_URL=https://ecommerce.routemisr.com/api/v1
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 🛠️ Getting Started
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash id="d8q1lm"
+git clone https://github.com/your-username/fresh-cart.git
+cd fresh-cart
+npm install
+npm run dev
+```
 
-## Learn More
+---
 
-To learn more about Next.js, take a look at the following resources:
+## 📈 What This Project Demonstrates
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+* Real-world authentication implementation
+* Debugging production vs development issues
+* Clean architecture & scalable codebase
+* Strong understanding of API integration
+* Handling edge cases in async flows
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+---
 
-## Deploy on Vercel
+## 💼 Freelance / Hiring Ready
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+This project demonstrates the ability to:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+* Build production-ready applications
+* Handle real-world bugs and edge cases
+* Work with authentication and protected routes
+* Structure scalable frontend architecture
+
+---
+
+## 👩‍💻 Author
+
+**Rana Ahmed**
+
+* 📧 [ranaahmed2108@gmail.com](mailto:ranaahmed2108@gmail.com)
+* 📱 +20 100 496 8483
+
+---
+

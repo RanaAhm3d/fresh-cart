@@ -43,7 +43,7 @@ export default function ProductSwiper({
         freeMode={true}
         watchSlidesProgress={true}
         modules={[FreeMode, Navigation, Thumbs]}
-        className="mySwiper my-2"
+        className="mySwiper my-2 cursor-pointer"
       >
         {productImages?.map((image, index) => (
           <SwiperSlide key={index}>

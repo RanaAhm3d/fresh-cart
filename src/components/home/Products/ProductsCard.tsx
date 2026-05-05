@@ -3,11 +3,12 @@ import { Product } from "@/interfaces/product.interface";
 import { formatPrice } from "@/lib/helpers/formatter";
 import Image from "next/image";
 import Link from "next/link";
-import { FaArrowsRotate, FaRegEye } from "react-icons/fa6";
+import { FaRegEye } from "react-icons/fa6";
 import RatingStars from "../../shared/RatingStars/RatingStars";
 import { calculateDiscount } from "@/lib/helpers/discount";
 import AddToCartButton from "@/components/ui/add-to-cart-button";
 import WishlistButton from "@/components/ui/whishlist-button";
+import ShareProdcutBtn from "@/components/ui/share-product-button";
 
 interface ProductsCardProps {
   product: Product;
@@ -31,9 +32,7 @@ export default function ProductsCard({ product }: ProductsCardProps) {
         )}
         <div className="absolute top-3 right-3 flex flex-col space-y-2 *:bg-white *:h-8 *:w-8 *:flex *:items-center *:justify-center *:rounded-full *:shadow-sm *:cursor-pointer ">
           <WishlistButton productId={product?._id} />
-          <button className=" text-gray-600 hover:text-primary-600">
-            <FaArrowsRotate />
-          </button>
+          <ShareProdcutBtn productId={product?._id} />
           <Link
             href={`/products/${product?._id}`}
             title="View product"

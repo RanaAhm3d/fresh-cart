@@ -145,11 +145,23 @@ export default async function NavsTabs({ product }: { product: Product }) {
                       }
                     />
                   </div>
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4 ">
-                    {reviews?.map((review) => (
-                      <ReviewCard key={review?._id} review={review} />
-                    ))}
-                  </div>
+                  {reviews.length === 0 ? (
+                    <div className="flex flex-col items-center justify-center gap-2 py-16 rounded-xl">
+                      <FaStar className="text-gray-300 text-7xl" />
+                      <h3 className="text-lg font-semibold text-gray-800">
+                        No reviews yet
+                      </h3>
+                      <p className="text-gray-500 text-sm mt-1">
+                        Be the first to share your experience!
+                      </p>
+                    </div>
+                  ) : (
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4 ">
+                      {reviews?.map((review) => (
+                        <ReviewCard key={review?._id} review={review} />
+                      ))}
+                    </div>
+                  )}
                 </div>
               </div>
             </TabsContent>
